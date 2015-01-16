@@ -1,0 +1,83 @@
+---
+title: "Statistical Inference"
+output: html_document
+---
+###SYNOPSIS
+The aim of this study is to analyse the tooth growth data in the R data sets package as a part of statistical inference class in the data science track.
+
+Description of data set-The response is the length of odontoblasts (teeth) in each of 10 guinea pigs at each of three dose levels of Vitamin C (0.5, 1, and 2 mg) with each of two delivery methods (orange juice or ascorbic acid).
+
+####1. Load the ToothGrowth data and perform some basic exploratory data analyses 
+
+```{r, fig.height=3}
+library(ggplot2)
+library(plyr)
+library(xtable)
+library(grid)
+
+data(ToothGrowth)
+head(ToothGrowth)
+
+ggplot(ToothGrowth, aes(x=dose, y=len,col=supp)) + 
+  geom_point() + 
+  facet_wrap(~ supp) + 
+  stat_smooth(method='lm') +
+  ggtitle('Scatter Plot')
+ggplot(ToothGrowth, aes(supp, len,col=supp)) + 
+  geom_boxplot() + geom_jitter()+
+  facet_wrap(~ dose) + 
+  ggtitle('Box Plot');
+
+
+```
+
+####Provide a basic summary of the data.
+```{r}
+a <-ToothGrowth
+summary(ToothGrowth)
+str(ToothGrowth)
+
+```
+
+
+```{r}
+mean <-tapply(a$len,a$supp,mean,simplify=F)
+mean[1]
+sd <-tapply(a$len,a$supp,sd,simplify=F)
+```
+
+We assume that the data is roughly mound-shaped (as can be seen in the plot below).  The data must also be IID (independant and identically distributed), which is reasonable because scientific invesitagations like this one usually select subjects randomly from a given population for each test group.  Since the sample size is small, t-tests will be used.
+
+ 
+```{r, fig.height=2}
+Dose <- as.factor(ToothGrowth$dose);
+ggplot(ToothGrowth, aes(len)) + geom_density(aes(fill=Dose), alpha=.2) + facet_wrap(~ supp)
+```
+ 
+### Results
+First, we compare the ascorbic acid supplement to the orange juice (for all dose levels) using a two-sample t-test.
+ 
+```{r, echo=TRUE}
+temp <- t.test(subset(ToothGrowth, supp=='OJ',len),subset(ToothGrowth, supp=='VC',len) )[c('p.value','conf.int')];
+bySupp <- data.frame(Lower = temp$conf.int[1], Upper=temp$conf.int[2],P.Value= temp$p.value);
+print(xtable(bySupp,cap="T-Test of Orange Juice vs. Ascorbic Acid"),comment=F);
+```
+
+The confidence interval incldues 0, and the p-value is greater than 5%, so there is no significant difference between orange juice and ascorbic acid on tooth growth when all dose levels are included.  Now we will use a more "fine-grained" approach and perform t-tests to compare the supplements by dosage.
+
+```{r, echo=T,message=FALSE}
+byDoseSupp <- ddply(ToothGrowth, c('dose'), function(x) {
+  VC <- subset(x, supp=='VC',len);
+  OJ <- subset(x,supp=='OJ',len);
+  res <- t.test(OJ, VC); 
+  return(c( res$conf.int, res$p.value));
+});
+colnames(byDoseSupp) <- c('Dose', 'Lower', 'Upper', 'P.Value');
+print(xtable(byDoseSupp, cap="T-Test of OrangeJuice vs. Ascorbic Acid by Dose"), comment=F);
+```
+
+Here, we have significant findings.  At the .5mL and 1.0mL dose levels, Orange Juice has a demonstrable increase in tooth growth compared to the same dose of ascorbic acid.  At the 2.0mL dose, there is no significant difference.
+
+Thank you for reading
+
+-----Have a great day-----
