@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>###SYNOPSIS
+The aim of this study is to use simulation to explore inference and do some simple inferential data analysis. 
+This assignment has two parts-</p>
+
+<p>1.Simulation exercises.</p>
+
+<p>2.Basic inferential data analysis.</p>
+
+<p>The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. The mean of exponential distribution is 1/lambda and the standard deviation is also also 1/lambda.</p>
+
+<p>Here lambda is set as =0.2</p>
+
+<p>In this simulation, we will investigate the distribution of averages of 40 exponential(0.2)s. </p>
+
+<p>In simulation, we will calculate the means of 40 random values from exponential distribution with rate parameter lambda equal to 0.2. We will do 100 and 10,000 simulations and compare their distribtuions.</p>
+
+<p>####1. Show where the distribution is centered at and compare it to the theoretical center of the distribution.</p>
+
+<pre><code class="r">set.seed(123)
+
+means1 &lt;- c()
+for(i in 1:100){
+  m &lt;- mean(rexp(40, 0.2))
+  means1 &lt;- append(means1,m);
+}
+
+means2 &lt;- c()
+for(i in 1:10000){
+  m &lt;- mean(rexp(40, 0.2))
+  means2 &lt;- append(means2,m);
+}
+</code></pre>
+
+<p>We plot histograms of the mean to check the central tendency</p>
+
+<pre><code class="r">par(mfrow=c(1,2), mar=c(4,2,4,2)) 
+hist(means1)
+hist(means2)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAh1BMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZo8AZrU5AAA5ADk5AGU5OTk5OWU5OY85ZrU5j9plAABlADllAGVlOQBlOY9lZjlltf2POQCPOTmPOWWPZgCPj2WPtY+P29qP2/21ZgC1tWW1/rW1/v3ajzna/rXa/tra/v39tWX924/9/rX9/tr9/v2x/W90AAAALXRSTlP//////////////////////////////////////////////////////////wCl7wv9AAAACXBIWXMAAAsSAAALEgHS3X78AAAQNUlEQVR4nO2dAVvjuBFAL1x7hbuWC9drYbftQru0JJD///tq2Q4LrMbxyDO24nnv+/ZjFY9kj59lSxDbPxwgJD8svQGwDIgPCuKDgvigID4oiA8K4oOC+KAgPiiIDwrig4L4oCA+KIgPCuKDgvigID4oiA8K4oOC+KAgPiiIDwrig4L4oJSIf7758evh8HL349fuf0cebidsyP5qc3FfVvFywmq1VJX7w2bzdhtUTBP/YTOmJF9au0l+GfEftmKB3JvUy80b9PjmeG1W/3K3aRU8Nj+2h7R48+N/bn56erm7+HtzPO+aj5ujerf5U/P51ybomGoX39b+6akpv49IS2/bT9vqzTr/3eXarTTV+/NC4hfP/fnm4r6pW3jETRf/fJMOvJ/+1yXfHoXNzzabP1yl5NPS/3ZBT7vNkf5I7ePfJv8molu6PfTr6BpLzb9+8KnZrcuJXzT3fbOGw0PZ9bFU/HHrUvLt+rs8bpuDsdmQdCjur5ptf+y29/LbPtttUoXNbQpJn73Gv57u3ka0TR9Pq6l609i2ieiTPvQV5hVfU+5tuSyR6eLbUtq+tPmdhcfNbfuf5+50d3+slJK/7LPoPn2Nf5P8t4i+B6TQrnpbLbX6utJlxS+fe2mHt7rGb/rjVkq+jXlN/tsukZLvIl6TP1Zve0Ba+rrS+cVXlPtjuXer6dxDv/m50123idtD+uhj8rnT3beI15Pasfq35I8rXVj8ork/lk/mLMQfj8huYpUZ4KQ0d5v8Uf8an02+X3ocF71J/nWly4pfNPf+qrPYqL498/SntOZwPE5pms06TmnuuyS3/VnwXfKv8dnk2+zTMd5Xf3+6e3vGnIuK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" alt="plot of chunk unnamed-chunk-2"/> </p>
+
+<p>As we can see- increasing the number of simulations will improve the central tendency and the distribution gets closer to a standard normal distribution.</p>
+
+<p>####Center of Distribution</p>
+
+<p>As given in the assignment the Theoretical Distribution mean and SD is 1/lambda which is 5.</p>
+
+<p>We calculate the center of distribution for the simulated example</p>
+
+<pre><code class="r">mean(means1)
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r">mean(means2)
+</code></pre>
+
+<pre><code>## [1] 4.995
+</code></pre>
+
+<p>As we can see from the outputs above- each of these is close to 5.</p>
+
+<p>Also as we increase the number of simulations the value comes closer to the theoretical value.</p>
+
+<p>####2. Show how variable it is and compare it to the theoretical variance of the distribution.</p>
+
+<p>For the next part we use the standard functions sd and var in r</p>
+
+<pre><code class="r">var(means2)
+</code></pre>
+
+<pre><code>## [1] 0.6127
+</code></pre>
+
+<pre><code class="r">sd(means2)
+</code></pre>
+
+<pre><code>## [1] 0.7827
+</code></pre>
+
+<p>Theoretical standard deviation of exponential distribution is 1/lambda, while our calculated SD is 0.79</p>
+
+<p>####3. Show that the distribution is approximately normal.</p>
+
+<p>We know that increasing the number of simulations will give a distribution which is closer to the standard normal.</p>
+
+<p>In order to prove that distribution is normal mathematically, we will use the following properties of the normal distribution:</p>
+
+<ol>
+<li><p>68% of distribution lies between center and +/- 1 SD</p></li>
+<li><p>95% of distribution lies between center and +/- 2SD</p></li>
+<li><p>97.5% of distribution lies between center and +/- 3SD</p></li>
+</ol>
+
+<pre><code class="r">center &lt;- mean(means2) 
+sdev &lt;- sd(means2) 
+x &lt;- means2[means2 &gt;= (center - sdev) &amp; means2 &lt;= (center + sdev)]
+y &lt;- means2[means2 &gt;= (center - 2 * sdev) &amp; means2 &lt;= (center + 2 * sdev)]
+z &lt;- means2[means2 &gt;= (center - 3 * sdev) &amp; means2 &lt;= (center + 3 * sdev)]
+round(length(x)/length(means2),2) 
+</code></pre>
+
+<pre><code>## [1] 0.68
+</code></pre>
+
+<pre><code class="r">round(length(y)/length(means2),2)
+</code></pre>
+
+<pre><code>## [1] 0.96
+</code></pre>
+
+<pre><code class="r">round(length(z)/length(means2),2)
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<p>These correspond to the theoretical values above</p>
+
+<p>####4. Evaluate the coverage of the confidence interval for 1/lambda</p>
+
+<pre><code class="r">error &lt;- qt(0.975,df=length(means2)-1)*sdev/sqrt(length(means2))
+lower &lt;- center - error
+upper &lt;- center + error
+lower
+</code></pre>
+
+<pre><code>## [1] 4.98
+</code></pre>
+
+<pre><code class="r">upper
+</code></pre>
+
+<pre><code>## [1] 5.011
+</code></pre>
+
+<p>Thus the calculated confidence intervals are (4.98, 5.011)</p>
+
+<p>Thank you for reading</p>
+
+<p>&mdash;&ndash;Have a great day&mdash;&ndash;</p>
+
+</body>
+
+</html>
